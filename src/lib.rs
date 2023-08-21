@@ -114,12 +114,12 @@ impl Board {
         let d_x = a.x.max(b.x) - min_x;
         let d_y = a.y.max(b.y) - min_y;
 
-        println!("a.x\t{}\na.y\t{}\nb.x\t{}\nb.y\t{}", a.x, a.y, b.x, b.y);
-
-        println!(
-            "min_x\t{}\nmin_y\t{}\nd_x\t{}\nd_y\t{}",
-            min_x, min_y, d_x, d_y
-        );
+        // println!("a.x\t{}\na.y\t{}\nb.x\t{}\nb.y\t{}", a.x, a.y, b.x, b.y);
+        //
+        // println!(
+        //     "min_x\t{}\nmin_y\t{}\nd_x\t{}\nd_y\t{}",
+        //     min_x, min_y, d_x, d_y
+        // );
 
         if d_x > 0 {
             let bisecting_walls = [
@@ -129,7 +129,6 @@ impl Board {
                     .map(|r| r[min_x]),
             ]
             .iter()
-            .inspect(|n| println!("{:?}", n))
             .flatten()
             .flatten()
             .filter(|node| node.is_vertical())
@@ -146,7 +145,6 @@ impl Board {
                 self.nodes[min_y].get((min_x as isize - 1).max(0) as usize),
             ]
             .iter()
-            .inspect(|n| println!("{:?}", n))
             .flat_map(|n| *n)
             .flatten()
             .filter(|n| n.is_horizontal())
