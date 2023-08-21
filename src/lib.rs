@@ -122,6 +122,7 @@ impl Board {
         // );
 
         if d_x > 0 {
+            // TODO: Wrapping sub????
             let bisecting_walls = [
                 self.nodes.get(min_y).map(|r| r[min_x]),
                 self.nodes
