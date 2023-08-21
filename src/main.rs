@@ -1,3 +1,5 @@
+use quoridor::player::PlayerPosition;
+
 trait Printable {
     fn print(&self);
 }
@@ -53,5 +55,34 @@ fn main() {
     let mut board = quoridor::Board::new(2);
     board.place_wall(0, 0, quoridor::WallDirection::Vertical);
     board.place_wall(2, 3, quoridor::WallDirection::Horizontal);
+    board
+        .move_player(0, &quoridor::MoveDirection::West)
+        .unwrap();
+    board
+        .move_player(0, &quoridor::MoveDirection::South)
+        .unwrap();
+    board
+        .move_player(0, &quoridor::MoveDirection::South)
+        .unwrap();
+    board
+        .move_player(0, &quoridor::MoveDirection::South)
+        .unwrap();
+    board
+        .move_player(0, &quoridor::MoveDirection::East)
+        .unwrap();
+    board
+        .move_player(0, &quoridor::MoveDirection::South)
+        .unwrap();
+    board
+        .move_player(0, &quoridor::MoveDirection::West)
+        .unwrap();
+    board
+        .move_player(0, &quoridor::MoveDirection::East)
+        .unwrap();
+    let uwu = board.are_bisected(
+        &PlayerPosition { x: 3, y: 3 },
+        &PlayerPosition { x: 3, y: 4 },
+    );
+    println!("uwu? {}", uwu);
     board.print()
 }
